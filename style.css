@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+    background-color: #1e2327;
+    color: white;
+}
+
+.header{
+    margin-top:0px ;
+    margin-bottom: 20px;
+    box-shadow: 10px 0px #000;
+}
