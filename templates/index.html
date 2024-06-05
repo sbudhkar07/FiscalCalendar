@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Fiscal Calendar | Helixr</title>
+</head>
+<body>
+   <div class="header">
+    <img src="HelixrLogo.png" alt="Helixr Logo" class="logo">
+    <h1>Fiscal Calendar</h1>
+   </div> 
+   <div class="calendarbox">
+    <div class="filterbox">
+        <div class="country_option">
+            <select name="Country" id="Country">
+                <option value="UK">UK</option>
+                <option value="Ireland">Ireland</option>
+                <option value="India">India</option>
+            </select>
+        </div>
+        <div class="timescale_option">
+            <select name="timescale" id="timescale">
+                <option value="Week">Week</option>
+                <option value="Month">Month</option>
+                <option value="Year">Year</option>
+            </select>
+        </div>
+        <!--insert month selection-->
+    </div>
+    <div class="calendar">
+            <div class="calendar_header">
+                    <span id="prev" class="change_month">&#10094;</span>
+                    <h2 id="selected_month">June 2024</h2>
+                    <span id="next" class="change_month">&#10095;</span>
+            </div>
+            <div class="days">
+                <li class="mon">M</li>
+                <li class="tue">T</li>
+                <li class="wed">W</li>
+                <li class="thu">T</li>
+                <li class="fri">F</li>
+                <li class="sat">S</li>
+                <li class="sun">S</li>
+            </div>
+            <div class="month">
+                {% for week in month %}
+                    <div class="week">
+                        {%for day in week %}
+                            <div class="day">
+                                <div class="date">{{ day.day }}</div>
+                                <div class="tasks">
+                                    {% for task in tasks %}
+                                        {% if task[1] == day}
+                                        <div class="task">{{ task[0] }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+   </div>
+</body>
+</html>

@@ -59,9 +59,13 @@ ul{
 
 .month .next{
     float: right;
-    
     padding-top: 10px;
     align-items: center;
+}
+
+.change_month span:hover{
+    cursor: pointer;
+    background-color: #fa4616;
 }
 
 .days {
@@ -101,3 +105,4 @@ ul{
     background: #fa4616;
     color: white;
 }
+
