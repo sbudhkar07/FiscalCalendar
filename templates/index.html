@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Fiscal Calendar | Helixr</title>
 </head>
 <body>
    <div class="header">
-    <img src="HelixrLogo.png" alt="Helixr Logo" class="logo">
+    <img src="static/HelixrLogo.png" alt="Helixr Logo" class="logo">
     <h1>Fiscal Calendar</h1>
    </div> 
    <div class="calendarbox">
@@ -32,7 +32,7 @@
     <div class="calendar">
             <div class="calendar_header">
                     <span id="prev" class="change_month">&#10094;</span>
-                    <h2 id="selected_month">June 2024</h2>
+                    <h2 id="selected_month">{{ selected_month }}</h2>
                     <span id="next" class="change_month">&#10095;</span>
             </div>
             <div class="days">
@@ -52,8 +52,9 @@
                                 <div class="date">{{ day.day }}</div>
                                 <div class="tasks">
                                     {% for task in tasks %}
-                                        {% if task[1] == day}
-                                        <div class="task">{{ task[0] }}</div>
+                                        {% if task[1] == day.day %}
+                                            <div class="task">{{ task[0] }}</div>
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>

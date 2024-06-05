@@ -5,7 +5,6 @@ import calendar
 
 app = Flask(__name__)
 
-
 def current_month_tasks():
     month = datetime.now().month
     conn = sqlite3.connect("database.db")
@@ -23,10 +22,10 @@ def current_month_tasks():
 def calendar_view():
     tasks = current_month_tasks()
     today = date.today()
-    calendar = calendar.Calendar()
-    days = calendar.monthdatescalendar(today.year, today.month)
+    cal = calendar.Calendar()
+    days = cal.monthdatescalendar(today.year, today.month)
 
     return render_template('index.html', tasks=tasks, month=days)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug="True")

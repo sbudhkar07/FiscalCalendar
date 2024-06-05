@@ -1,23 +1,139 @@
-.calendar {
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+    background-color: #1e2327;
+    color: white;
+    font-family: "Asap", "Lato";
+}
+
+.header{
+    margin-top:0px ;
+    margin-bottom: 20px;
+    box-shadow: 10px 0px #000;
+    background-color: #000;
+    text-align: center;
+}
+
+.logo{
+    max-height: 10%;
+    max-width: 10%;
+    object-fit: contain;
+}
+
+
+ul{
+    list-style-type: none;
+}
+
+.calendarbox{
+    height: 100%;
+}
+
+.filterbox {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.filterbox select{
+    padding: 10px;
+    border: none;
+    background-color: #000;
+    color: white;
+    border-radius: 20%;
+}
+
+
+.calendar{
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.calendar_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.month ul li{
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.month .prev {
+    float: left;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.month .next{
+    float: right;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.calendar_header .change_month {
+    cursor: pointer;
+}
+
+.days{
     display: grid;
-    grid-template-columns: repeat(7, 14%);
-    gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+}
+
+.days li {
+    padding: 10px;
+    font-weight: bold;
+    list-style-type: none;
+    color: #FA4616;
+}
+
+.month {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+}
+
+.week {
+    display: contents;
 }
 
 .day {
-    border: 1px solid #ccc;
+    border: 1px solid #BBBCBC;
+    border-radius: 5%;
     padding: 10px;
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+    scrollbar-color: #333 #1e2327;
+    scrollbar-width: thin;
 }
 
 .date {
     font-weight: bold;
 }
+
 .tasks {
     margin-top: 10px;
 }
+
 .task {
     background-color: #f0f0f0;
     padding: 5px;
     margin-top: 5px;
+    color: black;
+    border-radius: 3%;
+    position: relative;
+    max-width: 100%;
 }
