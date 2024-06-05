@@ -10,32 +10,35 @@ document.addEventListener('DOMContentLoaded', function(){ //wait for the DOM to 
     let currentMonth = today.getMonth() + 1;
     let selectedCountry = country.value;
 
-    function updateCalendar(year, month, country){
-        fetch(`/update_calendar?year=${year}&month=${month}&country=${country}`)
-            .then(response => response.json())
-            .then(data => {
-                selectedMonth.textContent = data.selected_month;
-                const monthDiv = document.querySelector('.month');
-                monthDiv.innerHTML = '';
-                data.month.forEach(week => {
-                    const weekDiv = document.createElement('div');
-                    weekDiv.classList.add('week');
-                    week.forEach(day => {
-                        const dayDiv = document.createElement('div');
-                        dayDiv.classList.add('day');
-                        dayDiv.innerHTML = `
-                            <div class="date">${day.day}</div>
-                            <div class="tasks">
-                                ${day.tasks.map(task => `<div class="task">${task}</div>`).join('')}
-                            </div>
-                        `;
-                        weekDiv.appendChild(dayDiv);
-                    });
-                    monthDiv.appendChild(weekDiv);
-                });
-            });
+    async function updateCalendar(year, month, country){
+        try {
+            const response = await fetch(`/update_calendar?year=${year}&month=${month}&country=${country}`);
+            const data = await response.json();
         
-    }
+            selectedMonth.textContent = data.selected_month;
+            const monthDiv = document.querySelector('.month');
+            monthDiv.innerHTML = '';
+            data.month.forEach(week => {
+                const weekDiv = document.createElement('div');
+                weekDiv.classList.add('week');
+                week.forEach(day => {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('day');
+                    dayDiv.innerHTML = `
+                        <div class="date">${day.day}</div>
+                        <div class="tasks">
+                            ${day.tasks.map(task => `<div class="task">${task}</div>`).join('')}
+                        </div>
+                    `;
+                    weekDiv.appendChild(dayDiv);
+                });
+                monthDiv.appendChild(weekDiv);
+            });
+        } catch (error) {
+            console.error("Error fetching calendar data:", error);
+        }
+    };
+        
 
     prevButton.addEventListener('click', () => {
         currentMonth -= 1;
