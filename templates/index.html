@@ -65,6 +65,31 @@
     </div>
    </div>
    <div class="query_form">
+    <form action="GET" id="operation_form">
+        <h2>Modify Calendar</h2>
+        <h3>Do you want to add or delete a task?</h3>
+        <input type="radio" id="add" name="operation" value="Add">
+        <label for="add">Add</label><br>
+        <input type="radio" id="delete" name="operation" value="Delete">
+        <label for="delete">Delete</label>
+        <h3>Which country's calendar would you like to modify?</h3>
+        <input type="radio" id="uk" name="country_modify" value="UK">
+        <label for="uk">UK</label><br>
+        <input type="radio" id="ir" name="country_modify" value="Ireland">
+        <label for="ir">Ireland</label><br>
+        <input type="radio" id="in" name="country_modify" value="India">
+        <label for="in">India</label><br>
+        <input type="radio" id="fi" name="country_modify" value="FinanceTeam">
+        <label for="fi">Finance Team</label><br>
+        <input type="submit" value="Submit">
+    </form>
+    <form action="POST" id="add_form">
+
+    </form>
+    <form action="POST" id="delete_form">
+        <h3>Which task would you like to delete?</h3>
+        <input type="text" id="task_name" name="delete" value="Task Name">
+    </form>
    </div>
    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

@@ -3,8 +3,10 @@ import sqlite3
 from datetime import date, datetime
 import calendar
 
+#instantiate a Flask object
 app = Flask(__name__)
 
+#store the suffixes of the database tables
 db_abbrevs = {
     "UK": "uk",
     "Ireland": "ir",
@@ -12,6 +14,7 @@ db_abbrevs = {
     "FinanceTeam": "fi"
 }
 
+#select the events for a particular month and country and return an array of tuples storing task and date
 def current_month_tasks(month, country):
     conn = sqlite3.connect("country_database.db")
     cursor = conn.cursor()
@@ -24,6 +27,8 @@ def current_month_tasks(month, country):
     conn.close()
     return tasks
 
+
+#define the default calendar view
 @app.route('/')
 def calendar_view():
     month = datetime.now().month
@@ -42,6 +47,7 @@ def calendar_view():
                            current_month=today.month,
                            current_year=today.year)
 
+#get the desired month and country from the URL and return the days and tasks in JSON format
 @app.route('/update_calendar')
 def update_calendar():
     year = int(request.args.get('year'))
