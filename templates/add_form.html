@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Calendar | Helixr</title>
+</head>
+<body>
+    <form action="add_task" method="post">
+        <div class="task_name">
+            <input type="text" value="Task Name" name="task_name">
+        </div>
+        <div class="date_container" id="date_container">
+            <div class="date_select" id="date_select">
+                <input type="Date" name="date[]">
+            </div>
+        </div>
+        <button type="button" id="add_more">Add More</button>
+        <input type="submit" Value = "Submit">
+    </form>
+    <script src="{{ url_for('static', filename='add_form.js') }}"></script>
+    
+</body>
+</html>

@@ -64,12 +64,12 @@
             </div>
     </div>
    </div>
-   <div class="query_form">
-    <form action="GET" id="operation_form">
+   <div class="option_form">
+    <form action="/modify_tasks" method="get">
         <h2>Modify Calendar</h2>
         <h3>Do you want to add or delete a task?</h3>
         <input type="radio" id="add" name="operation" value="Add">
-        <label for="add">Add</label><br>
+        <label for="add">Add</label>
         <input type="radio" id="delete" name="operation" value="Delete">
         <label for="delete">Delete</label>
         <h3>Which country's calendar would you like to modify?</h3>
@@ -81,16 +81,8 @@
         <label for="in">India</label><br>
         <input type="radio" id="fi" name="country_modify" value="FinanceTeam">
         <label for="fi">Finance Team</label><br>
-        <input type="submit" value="Submit">
-    </form>
-    <form action="POST" id="add_form">
-
-    </form>
-    <form action="POST" id="delete_form">
-        <h3>Which task would you like to delete?</h3>
-        <input type="text" id="task_name" name="delete" value="Task Name">
-    </form>
-   </div>
+        <input type="Submit" value="Submit">
+        </form>
    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Calendar | Helixr</title>
+</head>
+<body>
+    <form action='/delete_task' method="post" class="delete_task">
+        <h2>Which task would you like to delete?</h2>
+        <select name="task_select" id="task_select">
+            {% for task in tasks %}
+                <option value="{{ task[0] }}">{{ task[0] }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit" id="submit_delete">
+    </form>
+</body>
+</html>
