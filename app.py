@@ -145,12 +145,13 @@ def show_form():
 
 @app.route('/add_task', methods=['POST'])
 def add_task():
+    conn = None
     try:
         name = request.form["task_name"]
         dates = request.form.getlist("date[]")
         country = session["country"]
 
-        if name.strip() == "":
+        if not name:
             flash("Task name is required", "error")
             return redirect(url_for('show_form', operation='Add', country_modify=country))
         
@@ -161,11 +162,6 @@ def add_task():
         if not country:
             flash("Invalid country selected", "error")
             return redirect(url_for('calendar_view'))
-        
-
-        if not name or not dates or not country:
-            flash("All fields are required", "error")
-            return redirect(url_for('show_form', operation='Add', country_modify=country))
 
         if name and dates and country:
             conn = sqlite3.connect("test_database.db")
@@ -195,12 +191,14 @@ def add_task():
     except Exception as e:
         flash(f"Error: {e}", "error")
     finally:
-        conn.close()
+        if conn:
+            conn.close()
 
     return redirect(url_for('calendar_view'))
 
 @app.route('/delete_task', methods=['POST'])
 def delete_task():
+    conn = None
     try:
         task = request.form["task_select"]
         country = session["country"]
@@ -233,7 +231,8 @@ def delete_task():
     except Exception as e:
         flash(f"Error: {e}", "error")
     finally:
-        conn.close()
+        if conn:
+            conn.close()
     
     return redirect(url_for('calendar_view'))
 

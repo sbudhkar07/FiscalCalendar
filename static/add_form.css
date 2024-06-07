@@ -77,3 +77,11 @@ button{
     margin-top: 5%;
 }
 
+li{
+    list-style: none;
+    color: red;
+}
+
+.flashes {
+    padding-left: 0;
+}
