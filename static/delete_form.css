@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+    font-family: "Asap", "Lato";
+    box-sizing: border-box;
+}
+
+html, body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e2327;
+    height: 100%;
+    margin: 0;
+}
+.delete_form {
+    background-color: #1e2327;
+    max-width: 300px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0,0,0, 0.6);
+    overflow: visible;
+}
+
+h2{
+    margin-top: 5%;
+    color: white;
+}
+
+select{
+    margin-top: 3%;
+    color: white;
+    background-color: black;
+    padding: 3%;
+    border-radius: 10px;
+    border-style: none;
+    width: 50%;
+}
+
+input[type="submit"]{
+    background-color: #FA4616;
+    cursor: pointer;
+    margin-top: 3%;
+    padding: 3%;
+    border-radius: 10px;
+    border-style: none;
+    width: 50%;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover{
+    background-color: white;
+    color: black;
+}

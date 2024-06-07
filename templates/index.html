@@ -8,9 +8,10 @@
 </head>
 <body>
    <div class="header">
-    <img src="static/HelixrLogo.png" alt="Helixr Logo" class="logo">
+    <img src="{{ url_for('static', filename='HelixrLogo.png') }}" alt="Helixr Logo" class="logo">
     <h1>Fiscal Calendar</h1>
    </div> 
+
    <div class="calendarbox">
     <div class="filterbox">
         <div class="country_option">
@@ -66,7 +67,18 @@
    </div>
    <div class="option_form">
     <form action="/modify_tasks" method="get">
-        <h2>Modify Calendar</h2>
+        <h2 class="form">Modify Calendar</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
         <h3>Do you want to add or delete a task?</h3>
         <input type="radio" id="add" name="operation" value="Add">
         <label for="add">Add</label>

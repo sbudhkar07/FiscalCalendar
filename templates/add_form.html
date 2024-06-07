@@ -3,21 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_form.css') }}">
     <title>Fiscal Calendar | Helixr</title>
 </head>
 <body>
-    <form action="add_task" method="post">
-        <div class="task_name">
-            <input type="text" value="Task Name" name="task_name">
-        </div>
-        <div class="date_container" id="date_container">
-            <div class="date_select" id="date_select">
-                <input type="Date" name="date[]">
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="add_form">
+        <form action="add_task" method="post">
+            <div class="task_name">
+                <h3>What is the name of the task you would like to add?</h3>
+                <input type="text" placeholder="Task Name" name="task_name">
             </div>
-        </div>
-        <button type="button" id="add_more">Add More</button>
-        <input type="submit" Value = "Submit">
-    </form>
+            <div class="date_container" id="date_container">
+                <h3>Add every date which the task occurs on annually</h3>
+                <div class="date_select" id="date_select">
+                    <input type="Date" name="date[]">
+                </div>
+            </div>
+            <button type="button" id="add_more">Add More</button>
+            <input type="submit" Value = "Submit">
+        </form>
+    </div>
     <script src="{{ url_for('static', filename='add_form.js') }}"></script>
     
 </body>

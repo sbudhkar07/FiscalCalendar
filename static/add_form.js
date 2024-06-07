@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const dateInput = document.createElement("input");
         dateInput.type = "date";
         dateInput.name = "date[]";
+        dateInput.required = true;
 
         dateDiv.appendChild(dateInput);
         dateContainer.appendChild(dateDiv);
