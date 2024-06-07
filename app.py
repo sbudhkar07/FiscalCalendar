@@ -18,7 +18,7 @@ db_abbrevs = {
 #select the events for a particular month and country and return an array of tuples storing task and date
 def current_month_tasks(month, country):
     try:
-        conn = sqlite3.connect("test_database.db")
+        conn = sqlite3.connect("final_database.db")
         cursor = conn.cursor()
         cursor.execute(f'''
         select TaskName, Day 
@@ -35,7 +35,7 @@ def current_month_tasks(month, country):
 
 def retrieve_task_list(country):
     try:
-        conn = sqlite3.connect("test_database.db")
+        conn = sqlite3.connect("final_database.db")
         cursor = conn.cursor()
         cursor.execute(f'''
         select TaskName 
@@ -164,7 +164,7 @@ def add_task():
             return redirect(url_for('calendar_view'))
 
         if name and dates and country:
-            conn = sqlite3.connect("test_database.db")
+            conn = sqlite3.connect("final_database.db")
             cursor = conn.cursor()
     
             cursor.execute(f'''
@@ -207,7 +207,7 @@ def delete_task():
             flash("All fields are required", "error")
             return redirect(url_for('show_form', operation='Delete', country_modify=country))
 
-        conn = sqlite3.connect("test_database.db")
+        conn = sqlite3.connect("final_database.db")
         cursor = conn.cursor()
         cursor.execute(f'''
         select TaskID from tasks_{db_abbrevs[country]}
